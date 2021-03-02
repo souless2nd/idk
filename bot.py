@@ -3,7 +3,7 @@ from discord.ext import commands
 import os
 
 client = commands.Bot(command_prefix=".")
-token = os.getenv("ODE2MTMxOTUwOTg5Mjc5MjMy.YD2gHA.YQixlqjoCFxN7lVM1uPzZtOzgnc")
+token = os.getenv("ODE2MTMxOTUwOTg5Mjc5MjMy.YD2gHA.8lfXIIt7K8IvBvmo-zG8pzY2-wA")
 
 @client.event
 async def on_ready() :
