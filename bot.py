@@ -1,26 +1,29 @@
 import discord
+from discord.ext.commands import Bot
 from discord.ext import commands
+import asyncio
+import time
+import datetime
+import emoji
 import os
-
-client = commands.Bot(command_prefix=".")
-token = os.getenv("ODE2MTMxOTUwOTg5Mjc5MjMy.YD2gHA.8lfXIIt7K8IvBvmo-zG8pzY2-wA")
-
-@client.event
-async def on_ready() :
-    await client.change_presence(status = discord.Status.idle, activity = discord.Game("Listening to .help"))
-    print("I am online")
-
-@client.command()
-async def ping(ctx) :
-    await ctx.send(f"🏓 Pong with {str(round(client.latency, 2))}")
-
-@client.command(name="whoami")
-async def whoami(ctx) :
-    await ctx.send(f"You are {ctx.message.author.name}")
-
-@client.command()
-async def clear(ctx, amount=3) :
-    await ctx.channel.purge(limit=amount)
-
-
-client.run(token)
+import random
+client = discord.Client()
+bot = commands.Bot(command_prefix = "!")
+bot.remove_command("help")
+@bot.event
+async def on_ready():
+    print("Im online")
+    Bot.wait_until_ready
+    client.wait_until_ready
+    game = discord.Game("with your feelings")
+    guild = bot.get_guild(811624953740263476)
+    await bot.change_presence(status=discord.Status.online, activity=game)
+extenstions = ['stats.py','admin_shit.py','events.py','fun.py','poll.py']
+if __name__ == '__main__':
+    for extension in extenstions:
+        try:
+            bot.load_extension(extension)
+            print(extension)
+        except Exception as error:
+            print(error)
+bot.run('token')
